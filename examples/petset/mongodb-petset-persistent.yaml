@@ -62,13 +62,18 @@ parameters:
   - name: VOLUME_CAPACITY
     displayName: "Volume Capacity"
     description: "Volume space available for data, e.g. 512Mi, 2Gi."
-    value: "1Gi"
+    value: "10Gi"
     required: true
 
   - name: MEMORY_LIMIT
     displayName: "Memory Limit"
     description: "Maximum amount of memory the container can use."
-    value: "512Mi"
+    value: "4Gi"
+
+  - name: CPU_LIMIT
+    displayName: "Cpu Limit"
+    description: "Maximum amount of cpu the container can use"
+    value: "1"
 
 objects:
   # A headless service to create DNS records
@@ -132,6 +137,7 @@ objects:
               resources:
                 limits:
                   memory: "${MEMORY_LIMIT}"
+                  cpu: "${CPU_LIMIT}"
       volumeClaimTemplates:
         - metadata:
             name: mongo-data
