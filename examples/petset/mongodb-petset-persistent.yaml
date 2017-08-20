@@ -131,7 +131,11 @@ objects:
                   value: "${MONGODB_SERVICE_NAME}"
               resources:
                 limits:
-                  memory: "${MEMORY_LIMIT}"
+                  cpu: 920m
+                  memory: 4Gi
+                requests:
+                  cpu: 73m
+                  memory: 1Gi
       volumeClaimTemplates:
         - metadata:
             name: mongo-data
